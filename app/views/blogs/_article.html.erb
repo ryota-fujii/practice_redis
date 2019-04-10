@@ -1,16 +1,15 @@
-<div id="main">
-    <%= image_tag("main-img.jpg") %>
+<div id="title">
+    <div>
+        <p><%= @blog.updated_at.strftime("%Y/%m/%d")%> / 書いた人:<%= @blog.user.email %></p>
+        <h1><%= @blog.title %></h1>
+    </div>
 </div>
-
 
 <div id="article_wrap">
 
-    <div id="article_list">
-      <% @blogs.each do |blog|%>
-        <%= render blog %>
-      <% end %>
+    <div id="content">
+        <p><%= @blog.text %></p>
     </div>
-
 
 
     <div id="sidebar">

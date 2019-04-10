@@ -1,0 +1,18 @@
+<div id="article_wrap">
+  <%= form_for @blog do |f| %>
+
+    <div class="field">
+       <%= f.label :タイトル %>
+       <%= f.text_field :title %>  
+    </div>
+
+    <div class="field">
+      <%= f.label :記事内容　%>
+      <%= f.text_area :text %>
+    </div>
+
+    <div class="field">
+      <%= f.submit value="create Article" %>
+    </div>
+  <% end %>
+</div>

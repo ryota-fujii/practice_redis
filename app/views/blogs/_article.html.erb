@@ -15,11 +15,13 @@
     <div id="sidebar">
         
         <h2>★PV数ランキング</h2>
+        <% unless @top_blogs == nil %>
         <ul>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+          <% @top_blogs.each do |top|%>
+            <li><a href="/blogs/<%= top.id %>"><%= top.title %><span>（PV）</span></a></li>
+          <% end %>
         </ul>
+        <% end %>
     </div>
     <div class="clear"></div>
 </div>

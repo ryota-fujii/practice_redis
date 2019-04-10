@@ -17,9 +17,11 @@
         
         <h2>★PV数ランキング</h2>
         <ul>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+          <% @top_blogs.each do |top|%>
+          <% pv = REDIS.get "blogs/#{top.id}"%>
+          <%= pv %>
+            <li><a href="/blogs/<%= top.id %>"><%= top.title %><span>（<% pv %>PV）</span></a></li>
+          <% end %>
         </ul>
     </div>
     <div class="clear"></div>

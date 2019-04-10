@@ -1,8 +1,12 @@
         <div>
             <h2><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></h2>
             <p><%= blog.updated_at.strftime("%Y/%m/%d")%></p>
+            <% if user_signed_in? %>
+            <% if blog.user_id == current_user.id %>
             <p>
                 <%= link_to '編集', edit_blog_path(blog.id) %>
                 <%= link_to '削除', "/blogs/#{blog.id}", method: :delete, data: { confirm: "削除してよろしいですか？"} %>
             </p>
+            <% end %>
+            <% end %>
         </div>

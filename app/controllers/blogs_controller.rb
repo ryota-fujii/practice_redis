@@ -1,10 +1,22 @@
 class BlogsController < ApplicationController
     def index
         @blogs = Blog.all
+        ids = REDIS.zrevrange "blogs", 0, 2
+        @top_blogs = Blog.where(id: ids)
+        # @blogs.each do |blog|
+        #     @blog_previews[@blog.id] = REDIS.get "blogs/#{blog.id}"
+        # end
+        # @blog_previews.sort_by{|k,v | v}
+
     end
 
     def show
         @blog = Blog.find(params[:id])
+
+        REDIS.zincrby "blogs", 1, "#{@blog.id}"
+        ids = REDIS.zrevrange "blogs", 0, 2
+        @top_blogs = Blog.where(id: ids)
+        
     end
 
     def new

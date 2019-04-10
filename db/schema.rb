@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_043414) do
     t.text "text"
     t.integer "user_id"
     t.string "title"
+    t.integer "access"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

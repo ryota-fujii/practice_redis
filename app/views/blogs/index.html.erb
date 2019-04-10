@@ -18,9 +18,9 @@
         <h2>★PV数ランキング</h2>
         <ul>
           <% @top_blogs.each do |top|%>
-          <% pv = REDIS.get "blogs/#{top.id}"%>
-          <%= pv %>
-            <li><a href="/blogs/<%= top.id %>"><%= top.title %><span>（<% pv %>PV）</span></a></li>
+          <%= REDIS.get "blogs/#{top.id}"%>
+         
+            <li><a href="/blogs/<%= top.id %>"><%= top.title %><span>（<%= top.access %>PV）</span></a></li>
           <% end %>
         </ul>
     </div>

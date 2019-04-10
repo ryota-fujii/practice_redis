@@ -18,7 +18,7 @@
         <% unless @top_blogs == nil %>
         <ul>
           <% @top_blogs.each do |top|%>
-            <li><a href="/blogs/<%= top.id %>"><%= top.title %><span>（PV）</span></a></li>
+            <li><a href="/blogs/<%= top.id %>"><%= top.title %><span>（<%= top.access %>PV）</span></a></li>
           <% end %>
         </ul>
         <% end %>

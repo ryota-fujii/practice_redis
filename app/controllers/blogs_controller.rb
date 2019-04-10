@@ -16,6 +16,13 @@ class BlogsController < ApplicationController
         REDIS.zincrby "blogs", 1, "#{@blog.id}"
         ids = REDIS.zrevrange "blogs", 0, 2
         @top_blogs = Blog.where(id: ids)
+
+        blog = @blog
+        if blog.access == nil
+            blog.access = 0
+        end
+        blog.access = blog.access + 1
+        blog.save
         
     end
 
